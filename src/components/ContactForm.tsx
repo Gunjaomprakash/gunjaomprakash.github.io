@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -104,7 +105,7 @@ const ContactForm = () => {
           className="min-h-[150px] w-full"
         />
       </div>
-      <Button type="submit" variant="default" className="w-full sm:w-auto" disabled={isSubmitting}>
+      <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
         {isSubmitting ? "Sending..." : "Send Message"}
       </Button>
     </form>

@@ -1,5 +1,5 @@
+
 import type { Config } from "tailwindcss";
-import animate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -13,23 +13,12 @@ export default {
 	theme: {
 		container: {
 			center: true,
-			padding: '1rem',
+			padding: '2rem',
 			screens: {
-				'2xl': '1200px'
+				'2xl': '1400px'
 			}
 		},
 		extend: {
-			fontFamily: {
-				'sans': [
-						'Inter',
-						'system-ui',
-						'sans-serif',
-				],
-				'mono': [
-					'IBM Plex Mono',
-					'monospace',
-				],
-			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -38,7 +27,7 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))',
+					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -64,23 +53,43 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				sidebar: {
+					DEFAULT: 'hsl(var(--sidebar-background))',
+					foreground: 'hsl(var(--sidebar-foreground))',
+					primary: 'hsl(var(--sidebar-primary))',
+					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+					accent: 'hsl(var(--sidebar-accent))',
+					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+					border: 'hsl(var(--sidebar-border))',
+					ring: 'hsl(var(--sidebar-ring))'
+				},
+				brand: {
+					'blue': '#3B82F6',
+					'indigo': '#6366F1',
+					'purple': '#8B5CF6'
+				}
 			},
 			borderRadius: {
-				lg: '0.375rem',
-				md: '0.25rem',
-				sm: '0.125rem'
-			},
-			boxShadow: {
-				'glow': '0 0 10px 2px hsl(var(--primary) / 0.3)',
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)'
 			},
 			keyframes: {
 				'accordion-down': {
-					from: { height: '0' },
-					to: { height: 'var(--radix-accordion-content-height)' }
+					from: {
+						height: '0'
+					},
+					to: {
+						height: 'var(--radix-accordion-content-height)'
+					}
 				},
 				'accordion-up': {
-					from: { height: 'var(--radix-accordion-content-height)' },
-					to: { height: '0' }
+					from: {
+						height: 'var(--radix-accordion-content-height)'
+					},
+					to: {
+						height: '0'
+					}
 				},
 				'fade-in': {
 					'0%': { opacity: '0' },
@@ -99,5 +108,5 @@ export default {
 			}
 		}
 	},
-	plugins: [animate],
+	plugins: [require("tailwindcss-animate")],
 } satisfies Config;

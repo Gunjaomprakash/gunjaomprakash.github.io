@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Brain, Code, Database, Network, Server } from "lucide-react";
@@ -45,7 +46,7 @@ const About = () => {
           across deep learning, natural language processing, computer vision, and IoT innovation.
         </p>
         <div className="flex flex-wrap gap-4">
-          <Button asChild variant="outline">
+          <Button asChild>
             <Link to="/contact">Get In Touch</Link>
           </Button>
           <Button variant="outline" asChild>
