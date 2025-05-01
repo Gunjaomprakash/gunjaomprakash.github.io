@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Moon, Sun } from "lucide-react";
@@ -8,16 +7,16 @@ const ThemeToggle = () => {
 
   return (
     <Button 
-      variant="ghost" 
+      variant="outline" 
       size="icon"
       onClick={toggleTheme}
-      className="rounded-full"
+      className="rounded-md hover:bg-accent hover:text-accent-foreground"
       aria-label="Toggle theme"
     >
       {theme === "light" ? (
-        <Moon className="h-4 w-4" />
+        <Moon className="h-5 w-5 transition-all" />
       ) : (
-        <Sun className="h-4 w-4" />
+        <Sun className="h-5 w-5 transition-all" />
       )}
     </Button>
   );

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -5,96 +6,92 @@
 
 @layer base {
   :root {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 217 32% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 224 76% 48%;
-
-    --radius: 0.5rem;
-  }
-
-  .light {
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
+    --foreground: 0 0% 10%;
+    
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 10%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
-
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
-
+    --popover-foreground: 0 0% 10%;
+    
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+    
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 10%;
+    
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 70%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 217 91% 60%;
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-accent: 0 0% 94%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-ring: 0 0% 70%;
   }
-}
 
-@layer base {
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+    
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+    
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 95%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 28%;
+
+    --sidebar: 0 0% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-ring: 0 0% 28%;
+  }
+
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-  
-  .page-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6;
+    @apply bg-background text-foreground font-mono;
+    min-height: 100vh;
   }
 
-  .section {
-    @apply py-12;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans tracking-tight font-semibold;
+    letter-spacing: -0.02em;
   }
-
-  .section-title {
-    @apply text-3xl font-bold mb-8 text-foreground;
-  }
-  
-  .section-subtitle {
-    @apply text-xl font-medium mb-4 text-foreground/80;
-  }
-}
-
-body {
-  min-height: 100vh;
 }
 
 #root {
@@ -146,4 +143,30 @@ pre {
 /* Updated link styles */
 a:not(.unstyled) {
   @apply text-primary hover:text-primary/80 transition-colors;
+}
+
+/* Futuristic accent glow for buttons/links */
+.btn-glow {
+  @apply shadow-glow transition-shadow duration-300;
+}
+
+/* Minimal card style */
+.card {
+  @apply bg-card border border-border rounded-lg p-6 shadow-lg;
+}
+
+/* Code/terminal tweaks */
+code, pre, .terminal {
+  font-family: 'JetBrains Mono', 'Fira Mono', 'monospace';
+}
+
+/* Button improvements */
+.dark button[data-variant="default"],
+.dark [role="button"][data-variant="default"] {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+button[data-variant="default"],
+[role="button"][data-variant="default"] {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
 }

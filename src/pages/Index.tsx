@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import ProjectCard from "@/components/ProjectCard";
 import BlogCard from "@/components/BlogCard";
 import { ArrowRight, Brain, Code, Database, Network, Server } from "lucide-react";
+
 const Index = () => {
   // Featured projects focused on AI/ML
   const featuredProjects = [{
@@ -54,11 +55,15 @@ const Index = () => {
   const techStack = [{
     name: "Framer",
     category: "Web Design",
-    icon: "public/lovable-uploads/61d853ac-53a4-49f6-9918-b490d8a88400.png"
+    icon: <Code className="h-8 w-8 text-primary" />
   }, {
     name: "Notion",
     category: "Project Management",
-    icon: "public/lovable-uploads/61d853ac-53a4-49f6-9918-b490d8a88400.png"
+    icon: <Server className="h-8 w-8 text-primary" />
+  }, {
+    name: "ChatGPT",
+    category: "AI Assistant",
+    icon: <Brain className="h-8 w-8 text-primary" />
   }, {
     name: "TensorFlow",
     category: "Machine Learning",
@@ -71,90 +76,94 @@ const Index = () => {
     name: "Spark",
     category: "Data Processing",
     icon: <Database className="h-8 w-8 text-primary" />
-  }, {
-    name: "React",
-    category: "Frontend Development",
-    icon: <Code className="h-8 w-8 text-primary" />
   }];
-  return <main className="w-full">
-      {/* Hero Section - Reduced top spacing */}
-      <section className="py-10 px-4 md:px-8">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none border-transparent bg-primary text-primary-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-500 mr-1.5"></span>
-              Available for Work
-            </span>
-          </div>
-          <h1 className="text-5xl font-bold mb-6">
-            Hey, I'm John Smith
+
+  return (
+    <main className="flex flex-col gap-16">
+      {/* Hero Section */}
+      <section className="flex flex-col items-start space-y-6">
+        <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none border-transparent bg-primary/10 text-primary">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary mr-1.5"></span>
+          Available for Work
+        </div>
+        <div className="space-y-4">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
+            Hey, I'm Om Prakash
           </h1>
-          <p className="text-xl mb-6">
+          <p className="text-xl text-muted-foreground">
             AI/ML Engineer | Full-Stack Developer | IoT Innovator
           </p>
-          <p className="text-lg text-muted-foreground mb-10">
+          <p className="text-lg text-muted-foreground max-w-xl">
             Turning raw data into real world intelligence.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <Button asChild size="lg">
-              <Link to="/contact">Get In Touch</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <Link to="/about">About Me</Link>
-            </Button>
+        </div>
+        <div className="flex flex-wrap gap-4">
+          <Button asChild variant="outline" size="lg">
+            <Link to="/contact">Get In Touch</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/about">About Me</Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section className="rounded-xl bg-muted/30 p-6">
+        <div className="flex flex-col space-y-8">
+          <h2 className="text-2xl font-medium">My Stack</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {techStack.map(tech => (
+              <div key={tech.name} 
+                className="flex flex-col items-center gap-2.5 rounded-lg border bg-card p-4 transition-colors hover:bg-accent hover:text-accent-foreground"
+              >
+                {tech.icon}
+                <div className="text-center">
+                  <h3 className="font-medium text-sm">{tech.name}</h3>
+                  <p className="text-xs text-muted-foreground">{tech.category}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Tech Stack Section - Centered and aligned */}
-      <section className="py-10 px-4 md:px-8 bg-muted/30">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-medium mb-10">My Stack</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {techStack.map(tech => <div key={tech.name} className="flex flex-col items-center border border-border/40 rounded-lg p-6 bg-card">
-                {typeof tech.icon === 'string' ? <img src={tech.icon} alt={tech.name} className="h-8 w-8 mb-3" /> : tech.icon}
-                <h3 className="font-medium text-sm mb-1">{tech.name}</h3>
-                <p className="text-xs text-muted-foreground text-center">{tech.category}</p>
-              </div>)}
-          </div>
+      {/* Featured Projects Section */}
+      <section className="space-y-8">
+        <div className="flex justify-between items-center">
+          <h2 className="text-2xl font-medium">Featured Projects</h2>
+          <Button asChild variant="ghost" className="group" size="sm">
+            <Link to="/projects" className="flex items-center">
+              All Projects 
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredProjects.map(project => (
+            <ProjectCard key={project.id} {...project} />
+          ))}
         </div>
       </section>
 
-      {/* Featured Projects Section - Centered and aligned */}
-      <section className="py-10 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-medium">Projects</h2>
-            <Button asChild variant="ghost" className="group" size="sm">
-              <Link to="/projects" className="flex items-center">
-                All Projects 
-                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProjects.map(project => <ProjectCard key={project.id} {...project} />)}
-          </div>
+      {/* Featured Blog Posts Section */}
+      <section className="space-y-8">
+        <div className="flex justify-between items-center">
+          <h2 className="text-2xl font-medium">Latest Articles</h2>
+          <Button asChild variant="ghost" className="group" size="sm">
+            <Link to="/blog" className="flex items-center">
+              All Articles 
+              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          {featuredPosts.map(post => (
+            <BlogCard key={post.id} {...post} />
+          ))}
         </div>
       </section>
-
-      {/* Featured Blog Posts Section - Centered and aligned */}
-      <section className="py-10 px-4 md:px-8 bg-muted/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-medium">Latest Articles</h2>
-            <Button asChild variant="ghost" className="group" size="sm">
-              <Link to="/blog" className="flex items-center">
-                All Articles 
-                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {featuredPosts.map(post => <BlogCard key={post.id} {...post} />)}
-          </div>
-        </div>
-      </section>
-    </main>;
+    </main>
+  );
 };
+
 export default Index;
