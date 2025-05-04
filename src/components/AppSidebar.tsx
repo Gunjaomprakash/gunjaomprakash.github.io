@@ -34,7 +34,7 @@ const AppSidebar = () => {
             JS
           </div>
           <div className="flex flex-col">
-            <span className="font-medium">John Smith</span>
+            <span className="font-medium">Om Prakash</span>
             <span className="text-xs text-muted-foreground">AI/ML Engineer</span>
           </div>
         </Link>

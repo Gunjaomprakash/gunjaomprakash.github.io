@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import ProjectCard from "@/components/ProjectCard";
-import BlogCard from "@/components/BlogCard";
-import { ArrowRight, Brain, Code, Database, Network, Server } from "lucide-react";
+import { GithubIcon, LinkedinIcon, Mail, ExternalLink } from "lucide-react";
+// Keeping the imports for potential future use
+// import ProjectCard from "@/components/ProjectCard";
+// import BlogCard from "@/components/BlogCard";
+// import { ArrowRight, Brain, Code, Database, Network, Server } from "lucide-react";
+
 const Index = () => {
+  // Keeping the data for potential future use
+  /* 
   // Featured projects focused on AI/ML
   const featuredProjects = [{
     id: "1",
@@ -76,8 +81,83 @@ const Index = () => {
     category: "Frontend Development",
     icon: <Code className="h-8 w-8 text-primary" />
   }];
+  */
+
+  return (
+    <main className="w-full min-h-screen flex flex-col items-center justify-center p-6 text-center">
+      <div className="max-w-3xl mx-auto bg-card border border-border/50 rounded-lg shadow-lg p-8 md:p-12 backdrop-blur-sm relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 code-pattern opacity-20 z-0"></div>
+        
+        {/* Content */}
+        <div className="relative z-10">
+          {/* Profile section */}
+          <div className="mb-8">
+            <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-secondary flex items-center justify-center text-primary text-4xl font-bold border-4 border-primary">
+              OG
+            </div>
+            <h1 className="text-4xl font-bold mb-2">Om Prakash Gunja</h1>
+            <p className="text-lg text-muted-foreground">Software Developer & Engineer</p>
+          </div>
+          
+          {/* Status message */}
+          <div className="my-8 py-6 px-4 bg-secondary/50 rounded-lg">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+              </span>
+              <h2 className="text-xl font-medium">Website Under Development</h2>
+            </div>
+            <p className="text-muted-foreground">
+              I'm currently building an awesome portfolio website. Check back soon for updates!
+            </p>
+          </div>
+          
+          {/* Social links */}
+          <div className="mt-8">
+            <h3 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">Connect With Me</h3>
+            <div className="flex justify-center gap-4">
+              <a 
+                href="https://github.com/gunjaomprakash" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-secondary hover:bg-secondary/80 text-foreground p-3 rounded-full transition-colors duration-300"
+                aria-label="GitHub"
+              >
+                <GithubIcon className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://linkedin.com/in/gunjaomprakash" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-secondary hover:bg-secondary/80 text-foreground p-3 rounded-full transition-colors duration-300"
+                aria-label="LinkedIn"
+              >
+                <LinkedinIcon className="h-5 w-5" />
+              </a>
+              <a 
+                href="mailto:gunjaomprakash@gmail.com" 
+                className="bg-secondary hover:bg-secondary/80 text-foreground p-3 rounded-full transition-colors duration-300"
+                aria-label="Email"
+              >
+                <Mail className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+          
+          {/* Footer note */}
+          <div className="mt-10 pt-6 border-t border-border/50 text-sm text-muted-foreground">
+            <p>© 2025 Om Prakash Gunja. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+  
+  /* Original layout - commented out for future reference
   return <main className="w-full">
-      {/* Hero Section - Reduced top spacing */}
+      {/* Hero Section - Reduced top spacing *//*}
       <section className="py-10 px-4 md:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-2 mb-6">
@@ -106,7 +186,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Tech Stack Section - Centered and aligned */}
+      {/* Tech Stack Section - Centered and aligned *//*}
       <section className="py-10 px-4 md:px-8 bg-muted/30">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-medium mb-10">My Stack</h2>
@@ -120,7 +200,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Projects Section - Centered and aligned */}
+      {/* Featured Projects Section - Centered and aligned *//*}
       <section className="py-10 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-8">
@@ -138,7 +218,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Blog Posts Section - Centered and aligned */}
+      {/* Featured Blog Posts Section - Centered and aligned *//*}
       <section className="py-10 px-4 md:px-8 bg-muted/30">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-8">
@@ -156,5 +236,7 @@ const Index = () => {
         </div>
       </section>
     </main>;
+  */
 };
+
 export default Index;

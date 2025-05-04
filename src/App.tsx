@@ -1,11 +1,11 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { SidebarProvider } from "@/components/ui/sidebar";
+// Sidebar provider commented out for "under development" phase
+// import { SidebarProvider } from "@/components/ui/sidebar";
 
 import Index from "./pages/Index";
 import Projects from "./pages/Projects";
@@ -17,14 +17,18 @@ import Layout from "./components/Layout";
 
 const queryClient = new QueryClient();
 
+// Determine the base URL based on environment
+const basename = process.env.NODE_ENV === 'production' ? '/gunjaomprakash.github.io/' : '/';
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
-          <SidebarProvider>
+        <BrowserRouter basename={basename}>
+          {/* Sidebar provider wrapper commented out */}
+          {/* <SidebarProvider> */}
             <div className="flex min-h-screen w-full">
               <Routes>
                 <Route path="/" element={<Layout />}>
@@ -37,7 +41,7 @@ const App = () => (
                 </Route>
               </Routes>
             </div>
-          </SidebarProvider>
+          {/* </SidebarProvider> */}
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>

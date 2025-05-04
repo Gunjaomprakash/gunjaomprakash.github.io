@@ -1,16 +1,16 @@
-
 import { Outlet } from "react-router-dom";
-import AppSidebar from "./AppSidebar";
-import { SidebarInset, SidebarRail } from "./ui/sidebar";
+// import AppSidebar from "./AppSidebar";
+// import { SidebarInset, SidebarRail } from "./ui/sidebar";
 import ThemeToggle from "./ThemeToggle";
 import Footer from "./Footer";
 
 const Layout = () => {
   return (
     <>
-      <AppSidebar />
-      <SidebarRail />
-      <SidebarInset className="bg-background">
+      {/* Sidebar components commented out for "under development" phase */}
+      {/* <AppSidebar /> */}
+      {/* <SidebarRail /> */}
+      {/* <SidebarInset className="bg-background"> */}
         <div className="flex justify-end p-2">
           <ThemeToggle />
         </div>
@@ -20,7 +20,7 @@ const Layout = () => {
           </main>
           <Footer />
         </div>
-      </SidebarInset>
+      {/* </SidebarInset> */}
     </>
   );
 };
