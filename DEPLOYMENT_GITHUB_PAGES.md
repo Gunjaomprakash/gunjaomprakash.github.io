@@ -19,6 +19,16 @@ This creates a `dist` folder with the production build.
 
 ## 3. Deploy to GitHub Pages
 
+### IMPORTANT: Fix Permissions Issue First
+
+Before deploying with GitHub Actions, you need to grant proper permissions:
+
+1. Go to your GitHub repository
+2. Click on Settings > Actions > General
+3. Scroll down to "Workflow permissions"
+4. Select "Read and write permissions"
+5. Save the changes
+
 ### Manual Deployment
 If you're deploying manually:
 
@@ -40,6 +50,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write  # This is critical for deployment to work!
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -57,6 +70,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Add .nojekyll file
+        run: touch dist/.nojekyll
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
@@ -78,6 +94,7 @@ Once deployed, your site should be available at:
 - If assets fail to load, check browser console for errors
 - Ensure all paths in your app use relative paths rather than absolute paths
 - If using custom domains, update the CNAME file and base paths accordingly
+- **Permission denied errors**: Ensure repository has proper workflow permissions (see above)
 
 ---
 
