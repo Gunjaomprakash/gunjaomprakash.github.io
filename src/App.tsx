@@ -17,8 +17,8 @@ import Layout from "./components/Layout";
 
 const queryClient = new QueryClient();
 
-// Determine the base URL based on environment
-const basename = process.env.NODE_ENV === 'production' ? '/gunjaomprakash.github.io/' : '/';
+// Set basename for GitHub Pages deployment
+const basename = '/gunjaomprakash.github.io/';
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

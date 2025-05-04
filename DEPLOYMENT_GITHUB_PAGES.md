@@ -1,101 +1,72 @@
-# GitHub Pages Deployment Instructions for Vite Project
+# Local Development and GitHub Pages Deployment
 
-## 1. Configuration Files Setup (Already Done)
+## Local Development
 
-The following files have been configured for GitHub Pages deployment:
+1. **Run the development server:**
+   ```
+   npm run dev
+   ```
+   This will start the local development server, typically at http://localhost:8080
 
-- **vite.config.ts** - Base path set to `/gunjaomprakash.github.io/` for production
-- **App.tsx** - Router basename set to `/gunjaomprakash.github.io/` for production
-- **404.html** - Special handling for SPA routing on GitHub Pages
-- **index.html** - Includes SPA redirect script for proper routing
+2. **Make your changes** to the site while developing locally.
 
-## 2. Build the Project
+3. **Test in the browser** to ensure everything works as expected.
 
-Run:
-```
-npm run build
-```
-This creates a `dist` folder with the production build.
+## Manual Deployment to GitHub Pages
 
-## 3. Deploy to GitHub Pages
+When you're ready to deploy to GitHub Pages:
 
-### IMPORTANT: Fix Permissions Issue First
+1. **Prepare for production build:**
+   - Edit `vite.config.ts` to change:
+     ```javascript
+     base: '/', // Local development
+     ```
+     to:
+     ```javascript
+     base: '/gunjaomprakash.github.io/', // GitHub Pages deployment
+     ```
 
-Before deploying with GitHub Actions, you need to grant proper permissions:
+   - Edit `src/App.tsx` to change:
+     ```javascript
+     const basename = '/';
+     ```
+     to:
+     ```javascript
+     const basename = '/gunjaomprakash.github.io/';
+     ```
 
-1. Go to your GitHub repository
-2. Click on Settings > Actions > General
-3. Scroll down to "Workflow permissions"
-4. Select "Read and write permissions"
-5. Save the changes
+2. **Build the project:**
+   ```
+   npm run build
+   ```
+   This creates a `dist` folder with the production build.
 
-### Manual Deployment
-If you're deploying manually:
+3. **Preview the production build locally** (optional):
+   ```
+   npm run preview
+   ```
 
-1. Push the contents of your repository to GitHub
-2. In your GitHub repository settings, set up GitHub Pages:
-   - Go to Settings > Pages
-   - Set Source to "GitHub Actions"
-   - Choose "Static HTML" workflow or create a custom one
+4. **Deploy to GitHub Pages:**
+   - Push the contents of the `dist` folder to the `gh-pages` branch of your repository
+   - You can use a tool like `gh-pages` npm package to simplify this process:
+     ```
+     npm install --save-dev gh-pages
+     ```
+     Then add to package.json scripts:
+     ```
+     "deploy": "gh-pages -d dist"
+     ```
+     And run:
+     ```
+     npm run deploy
+     ```
 
-### Using GitHub Actions (Recommended)
+5. **After deployment:**
+   - Change the configuration back for local development if needed
+   - Your site will be available at: https://gunjaomprakash.github.io/
 
-1. Create a `.github/workflows/deploy.yml` file with this content:
+## Important Notes
 
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: write  # This is critical for deployment to work!
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Add .nojekyll file
-        run: touch dist/.nojekyll
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: dist
-```
-
-2. Push this file to your repository
-3. GitHub Actions will automatically build and deploy your site when you push to main
-
-## 4. Verify Your Deployment
-
-Once deployed, your site should be available at:
-`https://gunjaomprakash.github.io/`
-
-## 5. Troubleshooting
-
-- If assets fail to load, check browser console for errors
-- Ensure all paths in your app use relative paths rather than absolute paths
-- If using custom domains, update the CNAME file and base paths accordingly
-- **Permission denied errors**: Ensure repository has proper workflow permissions (see above)
-
----
-
-Keep this file updated if your repo name changes or you move to a custom domain.
+- Always test your site locally before deploying
+- Remember to update the base path in both vite.config.ts and App.tsx when switching between local development and production
+- The first deployment may take a few minutes for GitHub Pages to process
